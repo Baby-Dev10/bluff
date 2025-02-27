@@ -5,6 +5,10 @@ import User from "../models/User";
 
 const googleClient = new OAuth2Client(process.env.GOOGLE_CLIENT_ID);
 
+interface AuthRequest extends Request {
+  user?: { userId: string };
+}
+
 export const googleAuth = async (
   req: Request,
   res: Response,
@@ -91,10 +95,6 @@ export const googleAuth = async (
 //     next(error);
 //   }
 // };
-
-interface AuthRequest extends Request {
-  user?: { userId: string };
-}
 
 // export const getProfile = async (
 //   req: AuthRequest, // Use extended request type
